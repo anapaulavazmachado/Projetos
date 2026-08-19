@@ -1,0 +1,148 @@
+def encontrar_maior_segmento(numeros):
+
+  if not numeros:
+
+    return []
+
+
+
+  maior_segmento = []
+
+  segmento_atual = [numeros[0]]
+
+
+
+  for i in range(1, len(numeros)):
+
+    if numeros[i] > numeros[i - 1]:
+
+      segmento_atual.append(numeros[i])
+
+    else:
+
+      if len(segmento_atual) > len(maior_segmento):
+
+        maior_segmento = segmento_atual
+
+      segmento_atual = [numeros[i]]
+
+  if len(segmento_atual) > len(maior_segmento):
+
+    maior_segmento = segmento_atual
+
+  return maior_segmento
+
+lista_numeros = []
+
+print("Digite seus números (digite 'pare' para encerrar):")
+
+
+
+while True:
+
+  valor = input('Digite um número: ')
+
+  if valor == 'pare':
+
+    break
+
+  lista_numeros.append(int(valor))
+
+
+
+resultado = encontrar_maior_segmento(lista_numeros)
+
+
+
+print(f'O maior segmento crescente é: {resultado}')
+
+print(f'O tamanho desse segmento é: {len(resultado)}')                                                      
+
+
+
+
+
+
+
+ def verificar(i,j) :
+
+  numero_i = str(i)
+
+  numero_j = str(j)
+
+  tamanho_i = len(numero_i)
+
+  tamanho_j = len(numero_j)
+
+  for a in range (tamanho_j - tamanho_i + 1):
+
+    calcular = numero_j[a : a + tamanho_i]
+
+    if calcular == numero_i :
+
+       print(f"{i} é uma parte do número de {j}")
+
+       return True
+
+  print(f"{i} não é uma parte do número de {j}")
+
+  return False
+
+
+
+tab_i = int(input('insira a parte do número:'))
+
+tab_j = int(input('insira o número principal:'))
+
+verificar(tab_i, tab_j)
+
+
+
+
+
+
+
+
+
+algarismos = { 'I' : 1,
+
+'V' : 5 ,
+
+'X' : 10,
+
+'L' : 50,
+
+'C' : 100,
+
+'D' : 500,
+
+'M' : 1000 }
+
+romano_numero = input("Digite o número romano: ")
+
+total = 0
+
+for i in range(len(romano_numero) - 1):
+
+  algarismos_1 = algarismos[romano_numero[i]]
+
+  algarismos_2 = algarismos[romano_numero[i + 1]]
+
+  if algarismos_1 < algarismos_2:
+
+    total -= algarismos_1
+
+  else:
+
+    total += algarismos_1
+
+if romano_numero[-1] in algarismos:
+
+  total += algarismos[romano_numero[-1]]
+
+else:
+
+  print("Erro: símbolo romano inválido.")
+
+print(total)
+
